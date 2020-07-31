@@ -67,5 +67,3 @@ func findObject(data []byte, reg ObjectRegistry) (Object, error) {
 
 	return reflect.New(t).Interface().(Object), nil
 }
-
-

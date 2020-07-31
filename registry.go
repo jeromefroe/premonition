@@ -6,6 +6,11 @@ import (
 	"reflect"
 )
 
+var (
+	errTypeNameMissing = errors.New("cannot register an Object that doesn't have a TypeName")
+	errInvalidType     = errors.New("can only register types that are pointers to structs")
+)
+
 // ObjectRegistry is a map from the name of an object's type to it's actual Go type.
 type ObjectRegistry = map[TypeMeta]reflect.Type
 
@@ -21,11 +26,6 @@ func MustRegisterObject(meta TypeMeta, obj Object) {
 		panic(fmt.Sprintf("Unable to register Object: %v.", err))
 	}
 }
-
-var (
-	errTypeNameMissing = errors.New("cannot register an Object that doesn't have a TypeName")
-	errInvalidType     = errors.New("can only register types that are pointers to structs")
-)
 
 // registerObject contains the actual logic for registering an Object in an ObjectRegistry.
 func registerObject(meta TypeMeta, obj Object, r ObjectRegistry) error {

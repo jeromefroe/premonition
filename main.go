@@ -21,6 +21,6 @@ func main() {
 	}
 
 	for _, obj := range objs {
-		fmt.Printf("%+v\n", obj)
+		fmt.Printf("%+v (%T)\n", obj, obj)
 	}
 }
