@@ -23,7 +23,7 @@ However, what if you need to unmarshal a struct, but don't know the type of the 
 time? This situation occurs, for instance, in the Kubernetes ecosystem, where resources can be
 defined in configuration files, and tools need to be able to read those configuration files to
 act upon the resources they contain. [The solution that Kubernetes adopted], and that this repo
-recreates, is to require a metadata type to be included in all supported structs that can be used
+recreates, is [to require a metadata type to be included in all supported structs] that can be used
 to identify, at runtime, which struct is being unmarshaled via a registry.
 
 ## Solution
@@ -180,6 +180,7 @@ unmarshaled appropriately:
 
 [the standard library's `encoding/json` package's example of it's `unmarshal` method]: https://golang.org/pkg/encoding/json/#example_Unmarshal
 [the solution that kubernetes adopted]: https://github.com/kubernetes/apimachinery/blob/master/pkg/runtime/doc.go
+[to require a metadata type to be included in all supported structs]: https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md#metadata
 [types.go]: ./types.go
 [`reflect.type`]: https://golang.org/pkg/reflect/#Type
 [registry.go]: ./registry.go
